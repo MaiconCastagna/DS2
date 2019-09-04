@@ -4,10 +4,14 @@ module.exports = {
     find: (req, res) => {
 
         repository.find().then(result => {
-            res.send(result);
-        }).catch(error => {
-            res.status(500).send(error);
-        });
+        if (result.length > 0) {
+            const cidades = [];
+            for (cidade of result) {
+                let cidade = {
+                    id: cidade.cidade_id,
+                }
+            }
+        }
     },
     create: (req, res) => {
 

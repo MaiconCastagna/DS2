@@ -1,5 +1,5 @@
 const repository = require('../repository/cliente.repository');
-const cliente = [];
+
 
 module.exports = {
 
@@ -10,7 +10,34 @@ module.exports = {
                 res.status(500).send(error);
             }
 
-            res.send(result);
+            const pedidos = [];
+
+            for (item of result) {
+
+                let pedido = {
+                    id: item.p_id,
+                    codigo: item.p_codigo,
+                    dtpedido: moment(item.dtpedido).format('YYYY-MM-DD'),
+                    observacao: item.observacao,
+                    cliente: {
+                        id: item.c_id,
+                        codigo: item.c_codigo,
+                        nome: item.c_nome,
+                        email: item.c_email
+                    },
+                    vendedor: {
+                        id: item.v_id,
+                        codigo: item.v_codigo,
+                        nome: item.v_nome,
+                        email: item.v_email
+                    },
+                    itens: item.itens
+                }
+
+                pedidos.push(pedido);
+            }
+
+            res.send(pedidos);
         });
 
     },
@@ -25,7 +52,7 @@ module.exports = {
             console.log(result);
 
             if (!result[0]) {
-                res.status(404).send();
+                res.status(404).send('not found');
             }
 
             res.send(result[0]);
@@ -56,7 +83,7 @@ module.exports = {
             }
 
             if (result.affectedRows == 0) {
-                res.status(404).send();
+                res.status(404).send('not found');
             }
 
             res.send(result);

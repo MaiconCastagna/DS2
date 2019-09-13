@@ -25,7 +25,7 @@ module.exports = {
             console.log(result);
 
             if (!result[0]) {
-                res.status(404).send();
+                res.status(404).send('not found');
             }
 
             res.send(result[0]);

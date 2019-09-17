@@ -1,5 +1,5 @@
-const repository = require('../repository/cliente.repository');
-const cliente = [];
+const repository = require('../repository/pedido.repository');
+const pedido = [];
 
 module.exports = {
 
@@ -20,27 +20,28 @@ module.exports = {
         repository.findById(req.params, (error, result) => {
             if (error) {
                 res.status(500).send(error);
-            }
+            };
+
+            console.log(result);
 
             if (!result[0]) {
-                res.status(404).send('not found');
-            } else {
-                res.send(result[0]);
+                res.status(404).send();
             }
 
+            res.send(result[0]);
 
         });
 
     },
 
     create: (req, res) => {
+
         repository.create(req.body, (error, result) => {
             if (error) {
                 res.status(500).send(error);
             }
 
             res.send(result);
-
         });
 
     },
@@ -48,29 +49,29 @@ module.exports = {
     update: (req, res) => {
         //Atualiza o id do objeto do req.body
         req.body.id = req.params.id;
+
         repository.update(req.body, (error, result) => {
             if (error) {
                 res.status(500).send(error);
             }
-            console.log(req.body);
+
             if (result.affectedRows == 0) {
-                res.status(404).send('not found');
-            } else {
-                res.send(result);
+                res.status(404).send();
             }
 
+            res.send(result);
         });
-
     },
-    delete: (req, res) => {
 
+    delete: (req, res) => {
         repository.delete(req.params, (error, result) => {
             if (error) {
                 res.status(500).send(error);
             }
 
+
             res.status(204).send();
         });
-
     }
+
 }

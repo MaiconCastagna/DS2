@@ -18,7 +18,46 @@ module.exports = {
                 return;
             }
 
-            const idPedido = resultPedido[0].ID_PED;
+            for (pedido of resultPedido) {
+                const idPedido = pedido.ID_PED
+
+                connection.query(queryItens, [idPedido],(error, resultItens) => {
+                    if (error) {
+                        callback(error, false);
+                        return;
+                    }
+    
+                    const itens = [];
+    
+                    //transformar os "itens" no formato JSON
+                    for (item of resultItens) {
+    
+                        let itempedido = {
+                            id: item.ip_id,
+                            qtdade: item.qtdade,
+                            vlrunit: item.vlrunit,
+                            produto: {
+                                id: item.p_id,
+                                codigo: item.codigo,
+                                nome: item.nome,
+                                descricao: item.descricao,
+                                preco: item.preco
+                            }
+                        }
+    
+                        itens.push(itempedido);
+    
+                    }
+                    
+                    //colocar "itens" na caixa
+                    resultPedido[0].itens = itens;
+    
+                    callback(error, resultPedido);
+                });
+            }
+            callback(false, pedidos);
+
+            const idPedido = resultPedido[].ID_PED;
 
             const queryItens = 'SELECT ip.id as ip_id, ip.quantidade, ip.vlrunit, ' +
                 'p.id as p_id, p.codigo, p.nome, p.descricao, p.preco ' +
@@ -130,13 +169,35 @@ module.exports = {
                     //Monta query de insercao de itens
                     let queryAux = '';
                     let qrInsertItens = 'INSERT INTO ITEMPEDIDO (QUANTIDADE,VLRUNIT,PRODUTO_ID, PEDIDO_ID) VALUES';
-                    //Insere os Itens do Pedido
+                    //Monta valores do insert com todos os itens do pedido
                     for (item of params.itens) {
 
-                        queryAux += queryAux == '' ? '' : ',' + "(" + pedidoId + "," + item.produto.id + ", " + item.qtdade + ", " + item.vlrunit +
+                        queryAux += queryAux == '' ? '' : ',';
+                        queryAux += "(" + pedidoId + "," + item.produto.id + ", " + item.qtdade + ", " + item.vlrunit +
                             ")"
                         callback(false, queryAux);
                     }
+                    queryItens += queryAux;
+
+                    connection.query(queryItens, (error, itensResult) => {
+                        if (error) {
+                            connection.rollback(() => {
+                                callback(error, false);
+                                return;
+                            })
+                        }
+
+                        connection.commit((error) => {
+                            connection.rollback(() => {
+                                callback(error, false);
+                                return;
+                            })
+
+                            params.id = idPedido;
+
+                            callback(false, params);
+                        });
+                    });
                 });
         });
     },

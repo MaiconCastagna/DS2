@@ -24,7 +24,7 @@ class EstadoController {
             await getRepository(EstadoEntity).save(estado);
             res.send(estado);
         } catch (error) {
-            res.status(500).send(error);
+            res.status(500).send(error + 'Teste Create Error');
         }
     }
 

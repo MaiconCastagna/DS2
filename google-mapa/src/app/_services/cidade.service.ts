@@ -7,17 +7,16 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ClienteService {
+export class CidadeService {
 
   constructor(private http: HttpClient) { }
 
-  public find(): Observable<ClienteEntity[]> {
+  public find(): Observable<CidadeEntity[]> {
 
-    return this.http.get<ClienteEntity[]>(environment.urlSaaS + '/clientes')
+    return this.http.get<CidadeEntity[]>(environment.urlSaaS + '/cidades')
 
   }
 }
-
 export class EstadoEntity {
 
   id: number;

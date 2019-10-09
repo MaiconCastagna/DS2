@@ -12,43 +12,19 @@ export class CidadeService {
   constructor(private http: HttpClient) { }
 
   public find(): Observable<CidadeEntity[]> {
-
     return this.http.get<CidadeEntity[]>(environment.urlSaaS + '/cidades')
-
   }
 }
 export class EstadoEntity {
-
   id: number;
-
   nome: string;
-
   sigla: string;
-
 }
 
 export class CidadeEntity {
-
   id: number;
-
   nome: string;
-
   lat: number;
-
   lng: number;
-
   estado: EstadoEntity;
-
-}
-
-export class ClienteEntity {
-  id: number;
-
-  nome: string;
-
-  codigo: string;
-
-  email: string;
-
-  cidade: CidadeEntity;
 }

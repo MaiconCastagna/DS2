@@ -17,6 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatFormFieldModule,
     MatSelectModule,
     MatMenuModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

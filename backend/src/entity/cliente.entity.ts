@@ -10,6 +10,9 @@ export class ClienteEntity {
     @Column({ length: 100, nullable: false })
     nome: string;
 
+    @Column({ length: 50, nullable: true })
+    email: string;
+
     @ManyToOne(type => CidadeEntity, { eager: true, nullable: false })//eager: "ansioso" traz dados dos parentes
     @JoinColumn({ name: 'cidade_id', })
     cidade: CidadeEntity;

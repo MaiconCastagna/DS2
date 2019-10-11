@@ -15,6 +15,29 @@ export class ClienteService {
   public find(): Observable<ClienteEntity[]> {
     return this.http.get<ClienteEntity[]>(environment.urlSaaS + '/clientes')
   }
+
+  //método para salvar
+  public save(cliente: ClienteEntity) {
+    if (cliente.id) {
+      return this.update(cliente);
+    } else {
+      return this.create(cliente);
+    }
+  }
+
+  public delete(id: number): Observable<ClienteEntity> {//passa só o id pra n puxar o objeto inteiro
+    return this.http.delete<ClienteEntity>(environment.urlSaaS + '/clientes/' + id)
+  }
+
+  private create(cliente: ClienteEntity): Observable<ClienteEntity> {
+    return this.http.post<ClienteEntity>(environment.urlSaaS + '/clientes', cliente);//adiciona o objeto a mais
+  }
+
+  private update(cliente: ClienteEntity): Observable<ClienteEntity> {
+    return this.http.put<ClienteEntity>(environment.urlSaaS + '/clientes/' + cliente.id, cliente);
+  }
+
+
 }
 
 export class ClienteEntity {

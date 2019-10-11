@@ -1,6 +1,5 @@
-import { EstadoEntity } from './estado.entity';
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
-
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm";
+import { EstadoEntity } from "./estado.entity";
 
 @Entity({ name: 'cidade' })
 export class CidadeEntity {
@@ -11,8 +10,8 @@ export class CidadeEntity {
     @Column({ length: 100, nullable: false })
     nome: string;
 
-    @ManyToOne(type => EstadoEntity, { eager: true, nullable: false })
-    @JoinColumn({ name: 'estado_id' })
+    @ManyToOne(type => EstadoEntity, { eager: true, nullable: false })//eager: "ansioso" traz dados dos parentes
+    @JoinColumn({ name: 'estado_id', })
     estado: EstadoEntity;
 
     @Column({ type: 'double', nullable: false })
@@ -20,5 +19,4 @@ export class CidadeEntity {
 
     @Column({ type: 'double', nullable: false })
     lng: number;
-
 }

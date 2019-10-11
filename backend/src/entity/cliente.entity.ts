@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm";
-import { CidadeEntity } from "./cidade.entity";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
+import { CidadeEntity } from './cidade.entity';
+
 
 @Entity({ name: 'cliente' })
 export class ClienteEntity {
@@ -7,18 +8,17 @@ export class ClienteEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({ length: 100, nullable: false })
+    @Column({ nullable: false, length: 6 })
+    codigo: string;
+
+    @Column({ nullable: false, length: 50 })
     nome: string;
 
-    @Column({ length: 50, nullable: true })
+    @Column({ nullable: false, length: 255 })
     email: string;
 
-    @ManyToOne(type => CidadeEntity, { eager: true, nullable: false })//eager: "ansioso" traz dados dos parentes
-    @JoinColumn({ name: 'cidade_id', })
+    @ManyToOne(type => CidadeEntity, { eager: true })
+    @JoinColumn({ name: 'cidade_id' })
     cidade: CidadeEntity;
-
-    
-    
-    //ADICIONAR OUTROS CAMPOS
 
 }

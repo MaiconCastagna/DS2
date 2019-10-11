@@ -32,6 +32,20 @@ mat-sidenav-container {
           text-align: right;
         }
       }
+
+      .panel-error {
+        margin-top: 50px;
+        text-align: center;
+
+        h1 {
+          color: #bababa;
+          margin: 10px 0;
+        }
+
+        p {
+          color: red;
+        }
+      }
     }
   }
 }

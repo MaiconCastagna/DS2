@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ClienteComponent } from './cliente/cliente.component';
+import { ConfirmDialogComponent } from './_components/confirm-dialog/confirm-dialog.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -22,11 +23,18 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CidadeComponent } from './cidade/cidade.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    ClienteComponent
+    ClienteComponent,
+    ConfirmDialogComponent,
+    CidadeComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -46,8 +54,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatInputModule,
     MatProgressBarModule,
     MatSnackBarModule,
+    MatDialogModule,
   ],
   providers: [],
+  entryComponents: [ConfirmDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

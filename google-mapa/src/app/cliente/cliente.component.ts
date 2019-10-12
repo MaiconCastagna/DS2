@@ -3,6 +3,8 @@ import { ClienteService, ClienteEntity } from '../_services/cliente.service';
 import { CidadeService, CidadeEntity } from '../_services/cidade.service';
 import { MatSidenav } from '@angular/material/sidenav';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent, ConfirmDialogModel } from '../_components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-cliente',
@@ -25,7 +27,7 @@ export class ClienteComponent implements OnInit {
   public loading: boolean;
 
   constructor(private service: ClienteService, private cidadeService: CidadeService,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar, private dialog: MatDialog) { }
 
   ngOnInit() {
 
@@ -55,6 +57,7 @@ export class ClienteComponent implements OnInit {
 
   private openSidebar(cliente: ClienteEntity) {//preciso acessar o objeto que ta no html, #1 onInit()
     this.cliente = cliente;//tenho q inicializar a variavels
+
     this.sidenav.open();
   }
 
@@ -66,11 +69,38 @@ export class ClienteComponent implements OnInit {
     this.openSidebar(cliente);
   }
 
+  public excluir(cliente: ClienteEntity): void {
+
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '400px',
+      data: new ConfirmDialogModel('Excluir Registro', 'Deseja realmente excluir o registro ?')
+    });
+
+    //subscribe = then 
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.loading = false;
+        this.service.delete(cliente.id).subscribe(result => {
+          this.snackBar.open('Registro excluido com sucesso!', '', {
+            duration: 3000
+          })
+        }, error => {
+          this.msgerror = error.message;
+
+        }).add(() => {
+          this.loading = false;
+        });
+
+      }
+    });
+  }
+
   public confirmar() {
     this.loading = true;
 
     this.service.save(this.cliente).subscribe(result => {
-      this.snackBar().open('Registro salvo com sucesso!', '', {
+      this.snackBar.open('Registro excluido com sucesso!', '', {
         duration: 3000
       });
     }, error => {

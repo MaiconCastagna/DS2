@@ -4,7 +4,7 @@ import { ClienteComponent } from './cliente/cliente.component';
 
 
 const routes: Routes = [
-  { path: 'cliente', component: ClienteComponent}
+  { path: 'cliente', component: ClienteComponent }
 ];
 
 @NgModule({

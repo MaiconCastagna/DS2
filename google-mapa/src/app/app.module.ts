@@ -25,6 +25,9 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CidadeComponent } from './cidade/cidade.component';
+import { AgmCoreModule } from '@agm/core';
+import { MapaComponent } from './mapa/mapa.component';
+
 
 
 
@@ -34,6 +37,7 @@ import { CidadeComponent } from './cidade/cidade.component';
     ClienteComponent,
     ConfirmDialogComponent,
     CidadeComponent,
+    MapaComponent,
 
   ],
   imports: [
@@ -55,6 +59,10 @@ import { CidadeComponent } from './cidade/cidade.component';
     MatProgressBarModule,
     MatSnackBarModule,
     MatDialogModule,
+    MatListModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AlzaSyDy6kfY-rVOtJhHStLoPWVYfpAMzcIMJlE'
+    }),
   ],
   providers: [],
   entryComponents: [ConfirmDialogComponent],

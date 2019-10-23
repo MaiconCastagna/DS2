@@ -1,1 +1,33 @@
-<router-outlet></router-outlet>
+<mat-toolbar class="toolbar-main">
+    <button mat-icon-button (click)="sidenav_menu.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <h2>DS2 - Clientes no mapa</h2>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-main">
+    <mat-sidenav #sidenav_menu mode="side">
+        <h3 mat-subheader>Menu principal</h3>
+        <mat-nav-list>
+            <mat-divider></mat-divider>
+            <mat-list-item routerLinkActive="active">
+                <mat-icon mat-list-icon>location_city</mat-icon>
+                <a matLine routerLink="/cidade">Cidades</a>
+                <!--não usa-se href pois n queremos mudar a página inteira apenas o que está dentro-->
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <mat-icon mat-list-icon>group</mat-icon>
+                <a matLine routerLink="/cliente">Clientes</a>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-icon mat-list-icon>Mapa</mat-icon>
+                <a matLine routerLink="/mapa">Mapa</a>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

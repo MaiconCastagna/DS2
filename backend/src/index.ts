@@ -13,4 +13,6 @@ createConnection().then(connection => {
         console.log('Aplicação está rodando na porta 3000!');
     })
 
-}).catch();
+}).catch(error => {
+    console.log('TypeORM dont connected: %s', error);
+});

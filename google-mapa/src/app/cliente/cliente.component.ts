@@ -1,6 +1,6 @@
+import { CidadeService, CidadeEntity } from './../_services/cidade.service';
+import { ClienteService, ClienteEntity } from './../_services/cliente.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ClienteService, ClienteEntity } from '../_services/cliente.service';
-import { CidadeService, CidadeEntity } from '../_services/cidade.service';
 import { MatSidenav } from '@angular/material/sidenav';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
@@ -13,7 +13,7 @@ import { ConfirmDialogComponent, ConfirmDialogModel } from '../_components/confi
 })
 export class ClienteComponent implements OnInit {
 
-  @ViewChild(MatSidenav, { static: true }) sidenav: MatSidenav //#1
+  @ViewChild(MatSidenav, { static: true }) sidenav: MatSidenav;
 
   public displayedColumns: string[] = ['codigo', 'nome', 'email', 'cidade', 'options'];
 
@@ -21,7 +21,6 @@ export class ClienteComponent implements OnInit {
   public cidades: CidadeEntity[] = [];
 
   public cliente: ClienteEntity = new ClienteEntity();
-
 
   public msgerror: string;
   public loading: boolean;
@@ -31,11 +30,11 @@ export class ClienteComponent implements OnInit {
 
   ngOnInit() {
 
-    //inicia variáveis de controlle
+
     this.msgerror = '';
     this.loading = true;
 
-    //carrega dados
+
     this.service.find().subscribe(result => {
 
       this.clientes = result;
@@ -54,53 +53,42 @@ export class ClienteComponent implements OnInit {
       this.msgerror = error.message;
     }).add(() => this.loading = false);
   }
-
-  private openSidebar(cliente: ClienteEntity) {//preciso acessar o objeto que ta no html, #1 onInit()
-    this.cliente = cliente;//tenho q inicializar a variavels
+  private openSidebar(cliente: ClienteEntity) {
+    this.cliente = cliente;
 
     this.sidenav.open();
   }
-
   public add() {
     this.openSidebar(new ClienteEntity());
   }
-
   public editar(cliente: ClienteEntity) {
     this.openSidebar(cliente);
   }
-
   public excluir(cliente: ClienteEntity): void {
-
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '400px',
-      data: new ConfirmDialogModel('Excluir Registro', 'Deseja realmente excluir o registro ?')
+      data: new ConfirmDialogModel('Excluir Registro', 'Deseja realmente excluir o registro?')
     });
-
-    //subscribe = then 
-
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.loading = false;
         this.service.delete(cliente.id).subscribe(result => {
-          this.snackBar.open('Registro excluido com sucesso!', '', {
+          this.snackBar.open('Registro salvo com sucesso!', '', {
             duration: 3000
-          })
+          });
         }, error => {
           this.msgerror = error.message;
-
         }).add(() => {
           this.loading = false;
-        });
-
+        })
       }
-    });
+    })
   }
-
   public confirmar() {
     this.loading = true;
 
     this.service.save(this.cliente).subscribe(result => {
-      this.snackBar.open('Registro excluido com sucesso!', '', {
+      this.snackBar.open('Registro salvo com sucesso!', '', {
         duration: 3000
       });
     }, error => {
@@ -112,9 +100,7 @@ export class ClienteComponent implements OnInit {
     });
   }
 
-  public compareOptions(id1, id2) {//para puxar objeto
-    //receita de bolo (:3)
-    return id1 && id2 && id1.id === id2.id
+  public compareOptions(id1, id2) {
+    return id1 && id2 && id1.id === id2.id;
   }
-
 }

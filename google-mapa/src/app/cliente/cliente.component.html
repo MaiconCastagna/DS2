@@ -1,8 +1,7 @@
 <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #sidenav position="end" mode="over" disableClose="true">
-
         <mat-toolbar>
-            <h2>Adicionar Cliente</h2>
+            <h2>Add Cliente</h2>
             <span class="flex-spacer"></span>
             <button mat-icon-button (click)="sidenav.close()">
                 <mat-icon>close</mat-icon>
@@ -19,20 +18,18 @@
                 <input matInput placeholder="Nome" [(ngModel)]="cliente.nome">
             </mat-form-field>
 
-            <mat-form-field>
+            <mat-form-field class="full-width">
                 <input matInput placeholder="E-mail" [(ngModel)]="cliente.email">
             </mat-form-field>
 
             <mat-form-field class="full-width">
-                <mat-select placeholder="Cidade" [(value)]="cliente.cidade" [compareWith]="compareOptions()">
-                </mat-select>
-                <!--ele tem que associar objeto com objeto e n texto-->
-                <mat-select>
+                <mat-select placeholder="Cidade" [(value)]="cliente.cidade" [compareWith]="compareOptions">
                     <mat-option *ngFor="let cidade of cidades" [value]="cidade">
-                        {{cidade.estado.sigla}} - {{cidade.nome}}</mat-option>
-                    <!--precisa-se criar uma provider para consumir backend-->
+                        {{ cidade.estado.sigla }} - {{ cidade.nome }}
+                    </mat-option>
                 </mat-select>
             </mat-form-field>
+
         </div>
 
         <mat-toolbar>
@@ -44,7 +41,6 @@
     </mat-sidenav>
 
     <mat-sidenav-content>
-
         <mat-card>
             <mat-card-title>
                 <mat-toolbar color="primary">
@@ -54,40 +50,40 @@
                         <mat-icon>add</mat-icon>
                     </button>
                 </mat-toolbar>
-                <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+                <mat-progress-bar mode="indeterminate" color="warn" *ngIf="loading"></mat-progress-bar>
             </mat-card-title>
 
             <mat-card-content>
                 <table mat-table [dataSource]="clientes" *ngIf="!msgerror">
 
-                    <!-- codigo Column -->
+                    <!-- Código Column -->
                     <ng-container matColumnDef="codigo">
-                        <th mat-header-cell *matHeaderCellDef> Codigo </th>
+                        <th mat-header-cell *matHeaderCellDef> Código </th>
                         <td mat-cell *matCellDef="let cliente"> {{cliente.codigo}} </td>
                     </ng-container>
 
-                    <!-- nome Column -->
+                    <!-- Nome Column -->
                     <ng-container matColumnDef="nome">
-                        <th mat-header-cell *matHeaderCellDef> Nome </th>
+                        <th mat-header-cell *matHeaderCellDef> Nome Completo </th>
                         <td mat-cell *matCellDef="let cliente"> {{cliente.nome}} </td>
                     </ng-container>
 
-                    <!-- email Column -->
+                    <!-- E-mail Column -->
                     <ng-container matColumnDef="email">
-                        <th mat-header-cell *matHeaderCellDef> Email </th>
+                        <th mat-header-cell *matHeaderCellDef> E-mail </th>
                         <td mat-cell *matCellDef="let cliente"> {{cliente.email}} </td>
                     </ng-container>
 
-                    <!-- cidade Column -->
+                    <!-- Cidade Column -->
                     <ng-container matColumnDef="cidade">
-                        <th mat-header-cell *matHeaderCellDef> Cidade/Uf </th>
+                        <th mat-header-cell *matHeaderCellDef> Cidade/UF </th>
                         <td mat-cell *matCellDef="let cliente"> {{cliente.cidade.nome}} /
-                            {{cliente.cidade.estado.sigla}}</td>
+                            {{cliente.cidade.estado.sigla}} </td>
                     </ng-container>
 
-                    <!-- options Column -->
+                    <!-- Options Column -->
                     <ng-container matColumnDef="options">
-                        <th mat-header-cell *matHeaderCellDef></th>
+                        <th mat-header-cell *matHeaderCellDef> </th>
                         <td mat-cell *matCellDef="let cliente">
                             <button mat-icon-button [matMenuTriggerFor]="menu">
                                 <mat-icon>more_vert</mat-icon>
@@ -105,22 +101,17 @@
                         </td>
                     </ng-container>
 
-
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
                 </table>
 
                 <div class="panel-error" *ngIf="msgerror">
                     <img src="assets/oops.png">
-                    <h1 class="mat-h1">Ocorreu um Erro!</h1>
+                    <h1 class="mat-h1">Ocorreu um Erro</h1>
                     <p class="mat-caption">{{ msgerror }}</p>
                     <button mat-button color="warn" (click)="ngOnInit()">Tentar Novamente</button>
                 </div>
             </mat-card-content>
-
         </mat-card>
-
     </mat-sidenav-content>
-
 </mat-sidenav-container>

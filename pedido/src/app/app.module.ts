@@ -1,11 +1,20 @@
-import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ClienteComponent } from './cliente/cliente.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+
+import { EstadoComponent } from './estado/estado.component';
+import { ClienteComponent } from './cliente/cliente.component';
+import { CidadeComponent } from './cidade/cidade.component';
+import { PedidoComponent } from './pedido/pedido.component';
+import { ProdutoComponent } from './produto/produto.component';
+import { TabelaprecoComponent } from './tabelapreco/tabelapreco.component';
+import { VendedorComponent } from './vendedor/vendedor.component';
+
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
@@ -20,19 +29,19 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
-
 import { ConfirmDialogComponent } from './_components/confirm-dialog/confirm-dialog.component';
-import { CidadeComponent } from './cidade/cidade.component';
-import { AgmCoreModule } from '@agm/core';
-import { MapaComponent } from './mapa/mapa.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    EstadoComponent,
     ClienteComponent,
-    ConfirmDialogComponent,
     CidadeComponent,
-    MapaComponent
+    PedidoComponent,
+    ProdutoComponent,
+    TabelaprecoComponent,
+    VendedorComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -54,9 +63,6 @@ import { MapaComponent } from './mapa/mapa.component';
     MatProgressBarModule,
     MatSnackBarModule,
     MatDialogModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDy6kfY-rVOtJhHStLoPWVYfpAMzcIMJlE'
-    })
   ],
   providers: [],
   entryComponents: [ConfirmDialogComponent],

@@ -20,12 +20,16 @@
         <a matLine routerLink="/cliente">Cliente</a>
       </mat-list-item>
       <mat-divider></mat-divider>
+      <mat-list-item routerLinkActive="active">
+        <mat-icon mat-list-icon>maps</mat-icon>
+        <a matLine routerLink="/map">MAPA</a>
+      </mat-list-item>
+      <mat-divider></mat-divider>
     </mat-nav-list>
 
   </mat-sidenav>
-
   <mat-sidenav-content>
+
     <router-outlet></router-outlet>
   </mat-sidenav-content>
-
 </mat-sidenav-container>

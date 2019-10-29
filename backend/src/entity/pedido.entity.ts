@@ -2,7 +2,6 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToMan
 import { ClienteEntity } from './cliente.entity';
 import { VendedorEntity } from './vendedor.entity';
 import { ItemPedidoEntity } from './itempedido.entity';
-import { type } from 'os';
 
 
 @Entity({ name: 'pedido' })
@@ -17,18 +16,17 @@ export class PedidoEntity {
     @Column({ nullable: false, type: 'date' })
     dtpedido: Date;
 
-    @Column({ nullable: false, length: 100 })
+    @Column({ nullable: true, length: 255 })
     observacao: string;
 
-    @ManyToOne(type => ClienteEntity, { eager: true })
+    @ManyToOne(type => ClienteEntity, { eager: true, nullable: false })
     @JoinColumn({ name: 'cliente_id' })
     cliente: ClienteEntity;
 
-    @ManyToOne(type => VendedorEntity, { eager: true })
+    @ManyToOne(type => VendedorEntity, { eager: true, nullable: false })
     @JoinColumn({ name: 'vendedor_id' })
     vendedor: VendedorEntity;
 
-    @OneToMany(type => ItemPedidoEntity, item => item.pedido)
+    @OneToMany(type => ItemPedidoEntity, item => item.pedido, { eager: true })
     itens: ItemPedidoEntity[];
-
 }

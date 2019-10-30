@@ -39,6 +39,6 @@ export class ProdutoEntity {
   id: number;
   codigo: string;
   nome: string;
-  descricao: string;
   preco: number;
+  descricao: string;
 }

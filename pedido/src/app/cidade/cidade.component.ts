@@ -74,7 +74,7 @@ export class CidadeComponent implements OnInit {
       if (result) {
         this.loading = false;
         this.service.delete(cidade.id).subscribe(result => {
-          this.snackBar.open('Registro salvo com sucesso!', '', {
+          this.snackBar.open('Registro excluido com sucesso!', '', {
             duration: 3000
           });
         }, error => {

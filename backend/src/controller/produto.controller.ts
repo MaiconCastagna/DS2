@@ -7,9 +7,9 @@ class ProdutoController {
     public async find(req: Request, res: Response) {
 
         try {
-            const produtoss = await getRepository(ProdutoEntity).find();
+            const produtos = await getRepository(ProdutoEntity).find();
 
-            res.send(produtoss);
+            res.send(produtos);
         } catch (error) {
             res.status(500).send(error);
         }

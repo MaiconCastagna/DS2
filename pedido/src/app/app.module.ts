@@ -12,7 +12,7 @@ import { ClienteComponent } from './cliente/cliente.component';
 import { CidadeComponent } from './cidade/cidade.component';
 import { PedidoComponent } from './pedido/pedido.component';
 import { ProdutoComponent } from './produto/produto.component';
-import { TabelaprecoComponent } from './tabelapreco/tabelapreco.component';
+import { TabelaPrecoComponent } from './tabelapreco/tabelapreco.component';
 import { VendedorComponent } from './vendedor/vendedor.component';
 
 import { MatListModule } from '@angular/material/list';
@@ -29,7 +29,11 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatTabsModule } from '@angular/material/tabs';
 import { ConfirmDialogComponent } from './_components/confirm-dialog/confirm-dialog.component';
+import { TotalPedidoPipe } from './_pipes/total-pedido.pipe';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -39,9 +43,10 @@ import { ConfirmDialogComponent } from './_components/confirm-dialog/confirm-dia
     CidadeComponent,
     PedidoComponent,
     ProdutoComponent,
-    TabelaprecoComponent,
+    TabelaPrecoComponent,
     VendedorComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    TotalPedidoPipe
   ],
   imports: [
     BrowserModule,
@@ -63,9 +68,12 @@ import { ConfirmDialogComponent } from './_components/confirm-dialog/confirm-dia
     MatProgressBarModule,
     MatSnackBarModule,
     MatDialogModule,
+    MatTabsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [],
-  entryComponents: [ConfirmDialogComponent],
+  entryComponents: [ConfirmDialogComponent],// sempre ao adicionar um dialog, este deve ficar no entryComponents;
   bootstrap: [AppComponent]
 })
 export class AppModule { }

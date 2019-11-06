@@ -6,15 +6,15 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class TabelaprecoService {
+export class TabelaPrecoService {
 
   constructor(private http: HttpClient) { }
 
-  public find(): Observable<TabelaprecoEntity[]> {
-    return this.http.get<TabelaprecoEntity[]>(environment.urlSaaS + '/tabelaprecos');
+  public find(): Observable<TabelaPrecoEntity[]> {
+    return this.http.get<TabelaPrecoEntity[]>(environment.urlSaaS + '/tabelaprecos');
   }
 
-  public save(tabelapreco: TabelaprecoEntity) {
+  public save(tabelapreco: TabelaPrecoEntity) {
     if (tabelapreco.id) {
       return this.update(tabelapreco);
     } else {
@@ -22,20 +22,20 @@ export class TabelaprecoService {
     }
   }
 
-  public delete(id: number): Observable<TabelaprecoEntity> {
-    return this.http.delete<TabelaprecoEntity>(environment.urlSaaS + '/tabelaprecos/' + id);
+  public delete(id: number): Observable<TabelaPrecoEntity> {
+    return this.http.delete<TabelaPrecoEntity>(environment.urlSaaS + '/tabelaprecos/' + id);
   }
 
-  private create(tabelapreco: TabelaprecoEntity): Observable<TabelaprecoEntity> {
-    return this.http.post<TabelaprecoEntity>(environment.urlSaaS + '/tabelaprecos', tabelapreco);
+  private create(tabelapreco: TabelaPrecoEntity): Observable<TabelaPrecoEntity> {
+    return this.http.post<TabelaPrecoEntity>(environment.urlSaaS + '/tabelaprecos', tabelapreco);
   }
 
-  private update(tabelapreco: TabelaprecoEntity): Observable<TabelaprecoEntity> {
-    return this.http.put<TabelaprecoEntity>(environment.urlSaaS + '/tabelaprecos/' + tabelapreco.id, tabelapreco);
+  private update(tabelapreco: TabelaPrecoEntity): Observable<TabelaPrecoEntity> {
+    return this.http.put<TabelaPrecoEntity>(environment.urlSaaS + '/tabelaprecos/' + tabelapreco.id, tabelapreco);
   }
 }
 
-export class TabelaprecoEntity {
+export class TabelaPrecoEntity {
   id: number;
   codigo: string;
   nome: string;

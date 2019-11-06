@@ -29,7 +29,6 @@ export class ProdutoComponent implements OnInit {
 
   ngOnInit() {
 
-
     this.msgerror = '';
     this.loading = true;
 

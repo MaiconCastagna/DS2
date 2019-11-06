@@ -4,7 +4,7 @@ import { ClienteComponent } from './cliente/cliente.component';
 import { CidadeComponent } from './cidade/cidade.component';
 import { EstadoComponent } from './estado/estado.component';
 import { VendedorComponent } from './vendedor/vendedor.component';
-import { TabelaprecoComponent } from './tabelapreco/tabelapreco.component';
+import { TabelaPrecoComponent } from './tabelapreco/tabelapreco.component';
 import { ProdutoComponent } from './produto/produto.component';
 import { PedidoComponent } from './pedido/pedido.component';
 
@@ -15,8 +15,9 @@ const routes: Routes = [
   { path: 'estado', component: EstadoComponent },
   { path: 'pedido', component: PedidoComponent },
   { path: 'produto', component: ProdutoComponent },
-  { path: 'tabelapreco', component: TabelaprecoComponent },
+  { path: 'tabelapreco', component: TabelaPrecoComponent },
   { path: 'vendedor', component: VendedorComponent },
+  { path: '**', redirectTo: 'pedido' },
 ];
 
 @NgModule({

@@ -27,6 +27,6 @@ export class PedidoEntity {
     @JoinColumn({ name: 'vendedor_id' })
     vendedor: VendedorEntity;
 
-    @OneToMany(type => ItemPedidoEntity, item => item.pedido, { eager: true })
+    @OneToMany(type => ItemPedidoEntity, item => item.pedido, { eager: true, cascade: true  })//cascade funciona só para OneToMany
     itens: ItemPedidoEntity[];
 }

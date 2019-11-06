@@ -73,7 +73,7 @@ export class ClienteComponent implements OnInit {
       if (result) {
         this.loading = false;
         this.service.delete(cliente.id).subscribe(result => {
-          this.snackBar.open('Registro salvo com sucesso!', '', {
+          this.snackBar.open('Registro escluído com sucesso!', '', {
             duration: 3000
           });
         }, error => {

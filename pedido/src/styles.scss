@@ -2,7 +2,6 @@ html,
 body {
   height: 100%;
 }
-
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -11,9 +10,11 @@ body {
 .flex-spacer {
   flex: 1 1 auto;
 }
-
 .full-width {
   width: 100%;
+}
+.flex-container {
+  display: flex;
 }
 
 .sidenav-container {
@@ -23,7 +24,7 @@ body {
     width: 650px;
 
     mat-toolbar {
-      background: none;
+      background: #fff;
 
       .mat-raised-button {
         margin-left: 5px;
@@ -47,7 +48,7 @@ body {
         }
       }
 
-      panel-error {
+      .panel-error {
         margin-top: 50px;
         text-align: center;
 
@@ -57,7 +58,7 @@ body {
         }
 
         p {
-          color: red;
+          color: #e44f4e;
         }
       }
     }

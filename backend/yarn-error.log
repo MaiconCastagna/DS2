@@ -1,8 +1,8 @@
 Arguments: 
-  C:\Programas\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add typeorm@next
+  C:\Programas\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add @types/socket.io
 
 PATH: 
-  C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Programas\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Yarn\bin\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\maico\AppData\Local\Microsoft\WindowsApps;C:\Programas\Microsoft VS Code\bin;C:\Users\maico\AppData\Roaming\npm;C:\Users\maico\AppData\Local\Yarn\bin;C:\Users\maico\AppData\Local\hyper\app-3.0.2\resources\bin;C:\Users\maico\AppData\Local\GitHubDesktop\bin;
+  C:\app\maico\product\18.0.0\dbhomeXE\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Programas\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Yarn\bin\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\maico\AppData\Local\Microsoft\WindowsApps;C:\Programas\Microsoft VS Code\bin;C:\Users\maico\AppData\Roaming\npm;C:\Users\maico\AppData\Local\Yarn\bin;C:\Users\maico\AppData\Local\hyper\app-3.0.2\resources\bin;C:\Users\maico\AppData\Local\GitHubDesktop\bin;
 
 Yarn version: 
   1.17.3
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: EPERM: operation not permitted, unlink 'C:\DS2\backend\node_modules\typeorm\driver\aurora-data-api\AuroraDataApiConnection.d.ts'
+  Error: EPERM: operation not permitted, unlink 'C:\DS2\backend\node_modules\typeorm\entity-factory\DefaultEntityFactory.d.ts'
 
 npm manifest: 
   {

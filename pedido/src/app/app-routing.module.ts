@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ClienteComponent } from './cliente/cliente.component';
-import { CidadeComponent } from './cidade/cidade.component';
-import { EstadoComponent } from './estado/estado.component';
+
 import { VendedorComponent } from './vendedor/vendedor.component';
-import { TabelaPrecoComponent } from './tabelapreco/tabelapreco.component';
+import { TabelaprecoComponent } from './tabelapreco/tabelapreco.component';
 import { ProdutoComponent } from './produto/produto.component';
 import { PedidoComponent } from './pedido/pedido.component';
+import { CidadeComponent } from './cidade/cidade.component';
+import { ClienteComponent } from './cliente/cliente.component';
+import { EstadoComponent } from './estado/estado.component';
 
 
 const routes: Routes = [
@@ -15,9 +16,9 @@ const routes: Routes = [
   { path: 'estado', component: EstadoComponent },
   { path: 'pedido', component: PedidoComponent },
   { path: 'produto', component: ProdutoComponent },
-  { path: 'tabelapreco', component: TabelaPrecoComponent },
+  { path: 'tabelapreco', component: TabelaprecoComponent },
   { path: 'vendedor', component: VendedorComponent },
-  { path: '**', redirectTo: 'pedido' },
+  { path: '**', redirectTo: 'pedido' }
 ];
 
 @NgModule({

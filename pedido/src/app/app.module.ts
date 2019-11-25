@@ -1,18 +1,19 @@
+import { environment } from '../../src/environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { EstadoComponent } from './estado/estado.component';
 import { ClienteComponent } from './cliente/cliente.component';
 import { CidadeComponent } from './cidade/cidade.component';
 import { PedidoComponent } from './pedido/pedido.component';
 import { ProdutoComponent } from './produto/produto.component';
-import { TabelaPrecoComponent } from './tabelapreco/tabelapreco.component';
+import { TabelaprecoComponent } from './tabelapreco/tabelapreco.component';
 import { VendedorComponent } from './vendedor/vendedor.component';
 
 import { MatListModule } from '@angular/material/list';
@@ -30,10 +31,17 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
-import { ConfirmDialogComponent } from './_components/confirm-dialog/confirm-dialog.component';
-import { TotalPedidoPipe } from './_pipes/total-pedido.pipe';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatBadgeModule } from '@angular/material/badge';
+
+import { ConfirmDialogComponent } from './_components/confirm-dialog/confirm-dialog.component';
+import { TotalPedidoPipe } from './_pipes/total-pedido.pipe';
+import { ItempedidoDialogComponent } from './_components/itempedido-dialog/itempedido-dialog.component';
+
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+const socketConfig: SocketIoConfig = { url: environment.urlSaaS, options: {} }
 
 @NgModule({
   declarations: [
@@ -43,10 +51,11 @@ import { MatNativeDateModule } from '@angular/material/core';
     CidadeComponent,
     PedidoComponent,
     ProdutoComponent,
-    TabelaPrecoComponent,
+    TabelaprecoComponent,
     VendedorComponent,
     ConfirmDialogComponent,
-    TotalPedidoPipe
+    TotalPedidoPipe,
+    ItempedidoDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -71,9 +80,15 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatTabsModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatCheckboxModule,
+    MatBadgeModule,
+    SocketIoModule.forRoot(socketConfig)
   ],
   providers: [],
-  entryComponents: [ConfirmDialogComponent],// sempre ao adicionar um dialog, este deve ficar no entryComponents;
+  entryComponents: [
+    ConfirmDialogComponent,
+    ItempedidoDialogComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -10,6 +10,7 @@ import { ConfirmDialogComponent, ConfirmDialogModel } from '../_components/confi
   templateUrl: './produto.component.html',
   styleUrls: ['./produto.component.scss']
 })
+
 export class ProdutoComponent implements OnInit {
 
   @ViewChild(MatSidenav, { static: true }) sidenav: MatSidenav;
